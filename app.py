@@ -1,11 +1,10 @@
-import requests
+from security import safe_requests
 
 api_key = 'b46372db203819b5609b6964739f7e71'
 
 user_input = input("Enter City")
 
-weather_data = requests.get(
-    f"https://api.openweathermap.org/data/2.5/weather?q={user_input}&units=imperial&APPID={api_key}")
+weather_data = safe_requests.get(f"https://api.openweathermap.org/data/2.5/weather?q={user_input}&units=imperial&APPID={api_key}")
 
 if weather_data.json() ['cod'] == '404':
     print("No City Found")
